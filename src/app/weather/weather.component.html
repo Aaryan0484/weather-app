@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="search">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="search-container">
+      <input type="text" placeholder="Search City" name="city" [(ngModel)]="city">
+      <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div>
+
+<div class="container" *ngIf="myWeather">
+  <div class="upper-data"> 
+    <img src="../assets/hot.jpg" *ngIf="myWeather.main.temp > 15">
+    <img src="../assets/cold.jpg" *ngIf="myWeather.main.temp <= 15">
+
+    <div class="weather-data">
+      <div class="location">{{ myWeather.name }}</div>
+      <div class="temperature">{{ myWeather.main.temp | number: '1.0-0' }}°C</div>
+      <div class="description">{{ myWeather.weather[0].main}}</div>
+    </div>
+  </div>
+
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min.png">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{ myWeather.main.temp_min | number: '1.0-0' }}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max.png">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{ myWeather.main.temp_max | number: '1.0-0' }}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humid.jfif">
+          <span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{ myWeather.main.humidity }}%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png">
+          <span>Wind</span>
+        </div>
+        <div class="info-block-value">
+          {{ myWeather.wind.speed }} km/h
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
