@@ -14,7 +14,7 @@ export class WeatherComponent implements OnInit {
   pressure: number = 0;
   summary: string = '';
   iconURL: string = '';
-  city: string = 'Sundernagar';
+  city: string = '';
   units: string = 'imperial';
   cityName: string = ''; // Add this line to declare the cityName variable
 
